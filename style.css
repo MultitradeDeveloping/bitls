@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+button {
+    outline: none;
+}
+a {
+  text-decoration: none;
+}
+
+.main {
+    background-size: cover;
+    background: transparent linear-gradient(348deg, #141416, #16131a 15%, #161419 85%, #2e214b) 0 0 no-repeat padding-box;
+    min-width: 100em;
+    min-height: 100em;
+    color: #fff;
+}
+
+.info {
+  min-height: 4.5em;
+  background-color: rgba(20, 20, 20, 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* Или space-between, flex-start, flex-end */
+  align-items: center; /* Выравнивание по вертикали */
+  position: fixed; /* Фиксируем элемент */
+  top: 0; /* Пример: зафиксировать элемент сверху экрана */
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Чтобы элемент был выше других */
+}
+
+
+.logo{
+  max-height: 4em;
+  margin-top: 0.25em;
+  margin-left: 1em;
+}
+
+/* Стили для выпадающего списка */
+.dropdown {
+
+    cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+/* Кнопка для выбора */
+.dropdown-btn {
+
+    cursor: pointer;
+    width: 14em;
+  --cyan: #00FFFF	;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  background: linear-gradient(to right, var(--cyan) 1%, transparent 1%,transparent 99% , var(--cyan) 100%);
+  border: 2px solid var(--cyan);
+  color: var(--cyan);
+  box-shadow: inset 0 0 10px var(--cyan);
+}
+
+/* Скрытый список по умолчанию */
+.dropdown-content {
+
+  display: none;
+  position: absolute;
+  background-color: #222;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Элементы списка */
+.dropdown-content li {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content li:hover {
+  background-color: #f1f1f1;
+  color: #000;
+}
+
+.metamask{
+  margin-top:0.5em;
+  max-height: 3em;
+  --green: #1BFD9C;
+ font-size: 15px;
+ padding: 0.7em 2.7em;
+ letter-spacing: 0.06em;
+ position: relative;
+ font-family: inherit;
+ border-radius: 0.6em;
+ overflow: hidden;
+ transition: all 0.3s;
+ line-height: 1.4em;
+ border: 2px solid var(--green);
+ background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 253, 156, 0.1) 100%);
+ color: var(--green);
+ box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
+}
+
+
+.metamask:hover {
+  color: #82ffc9;
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6), 0 0 9px 3px rgba(27, 253, 156, 0.2);
+}
+
+.metamask:before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform .4s ease-in-out;
+  background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%,rgba(27, 253, 156, 0.1) 60% , transparent 100%);
+}
+
+.metamask:hover:before {
+  transform: translateX(15em);
+}
+
+
+.mtt{  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* Или space-between, flex-start, flex-end */
+  align-items: center; }
+
+  .mtt_h{
+      --cyan: #1E90FF		;
+      font-size: 15px;
+      padding: 0.7em 2.7em;
+      letter-spacing: 0.06em;
+      position: relative;
+      font-family: inherit;
+      border-radius: 0.6em;
+      overflow: hidden;
+      transition: all 0.3s;
+      line-height: 1.4em;
+      border: 2px solid var(--cyan);
+      color: var(--cyan);
+      box-shadow: inset 0 0 10px var(--cyan);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Или space-between, flex-start, flex-end */
+    align-items: center;
+  margin-right: 1em;}
+
+  .cssbuttons-io-button {
+
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.7em 0.2em 0.7em 0.7em;
+    color: white;
+    background: #1E90FF;
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #1E90FF;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+}
+
+.cssbuttons-io-button svg {
+  margin-right: 6px;
+}
+
+.cssbuttons-io-button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #1E90FF;
+}
+
+.cssbuttons-io-button:active {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+
+.menu{
+
+  padding-top: 5.5em;
+  background-color: rgba(20, 20, 20, 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* Или space-between, flex-start, flex-end */
+  align-items: center;
+}
+
+.menu-label{
+  cursor: pointer;
+}
+
+.picked {
+  color: #00FFFF;
+  font-size: 250%;
+  border-bottom: 2px solid #00FFFF; /* Нижняя граница того же цвета */
+}
+.lsd {
+
+    margin: 2em auto;
+    width: 60em; /* Width of the rectangle */
+    height: 7em; /* Default height */
+    overflow: hidden; /* Hide elements beyond the height */
+    border-radius: 20px; /* Rounded edges */
+    transition: height 0.5s ease; /* Smooth height change */
+    cursor: pointer;
+    border: 0.5em solid grey;
+}
+
+.lsd.expanded {
+    height: 30em;
+}
+
+.lsd-info {
+    text-align: center;
+}
+
+.price-value{
+  color: #00FFFF;
+}
+
+.profit{
+  color:#66FF00;
+}
+
+.lsd-info:nth-child(1){
+    margin-top: 0.5em;
+}
+
+/* .lsd.expanded .lsd-info:nth-child(1){
+    margin-top: 0em;
+} */
+/* Скрытие блоков по умолчанию */
+.lsd .lsddata,
+.lsd .txgroup {
+    display: none;
+}
+
+/* Показ блоков, когда класс expanded добавлен */
+.lsd.expanded .lsddata,
+.lsd.expanded .txgroup {
+    display: flex;
+    flex-direction: row; /* Элементы выстраиваются горизонтально */
+}
+
+/* Ограничиваем размеры контейнера для графика */
+.graph {
+    display: flex;
+    width: 25em;
+}
+
+/* Ограничиваем размеры самого графика */
+.chart {
+    width: 100%;
+    max-width: 25em; /* Максимальная ширина графика */
+    max-height: 12em; /* Ограничиваем максимальную высоту */
+}
+
+.lsd-name{
+  display: flex;
+    justify-content: center;
+  font-size: 300%;
+  transition: font-size 0.2s ease;
+
+  color: #DDDDFF;
+}
+
+.lsd.expanded .lsd-name{
+  color: #00FFFF;
+  font-size: 360%;
+}
+
+
+.lsd-block{
+  margin-top: 4em;
+}
+
+.txbutton{
+  margin-left: 3em;
+  min-width: 21em;
+  min-height: 3em;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+
+
+.lsd.expanded .txbutton{
+  display: flex;
+}
+
+
+.group {
+  margin-top: 1.5em;
+  margin-left: 3em;
+ position: relative;
+ transform: translateX(25%);
+
+}
+
+.input {
+
+ font-size: 16px;
+ padding: 10px 10px 10px 5px;
+ display: block;
+ width: 15em;
+ border: none;
+ border-bottom: 1px solid #515151;
+ background: transparent;
+ color: #fff
+}
+
+.input:focus {
+ outline: none;
+}
+
+label {
+ color: #ddd;
+ font-size: 18px;
+ font-weight: normal;
+
+ position: absolute;
+ pointer-events: none;
+
+ top: 10px;
+
+    justify-content: center;
+ transition: 0.2s ease all;
+ -moz-transition: 0.2s ease all;
+ -webkit-transition: 0.2s ease all;
+}
+
+.input:focus ~ label, .input:valid ~ label {
+
+ top: -20px;
+ font-size: 14px;
+ color: #5264AE;
+}
+
+
+.bar {
+ position: relative;
+ display: block;
+ /* width: 20em; */
+
+}
+
+.bar:before, .bar:after {
+ content: '';
+ height: 2px;
+ width: 0;
+ bottom: 1px;
+ position: absolute;
+ background: #5264AE;
+ transition: 0.2s ease all;
+ -moz-transition: 0.2s ease all;
+ -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+ /* left: 50%; */
+}
+
+.bar:after {
+ /* right: 50%; */
+}
+
+.input:focus ~ .bar:before, .input:focus ~ .bar:after {
+ width: 15em;
+}
+
+
+.volume_main{
+  margin-top: 0.2em;
+  font-style: italic;
+}
+
+
+.highlight {
+ position: absolute;
+ height: 60%;
+ width: 100px;
+ top: 25%;
+ left: 0;
+ pointer-events: none;
+ opacity: 0.5;
+}
+
+.input:focus ~ .highlight {
+ animation: inputHighlighter 0.3s ease;
+}
+
+@keyframes inputHighlighter {
+ from {
+  background: #5264AE;
+ }
+
+ to {
+  width: 0;
+  background: transparent;
+ }
+}
+.infoblock{
+  height: 12em;
+  margin-top:2em;
+  justify-content: center;
+  align-items: center;}
+
+.txgroup{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+align-items: center;
+ /* Выравнивание по вертикали */
+  margin-right: 2em;
+
+}
+
+.txsubgroup{
+}
+
+
+.txbutton {
+  /* in scss with just one variable i can change opacity with rgba(variable, opacity) but in css it's not possible so i have used three seperate variables */
+  /* with hue-rotate color can be changed */
+  /* change this rotation value */
+  filter: hue-rotate(0deg);
+
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem; /* уменьшено */
+  background: radial-gradient(
+      circle,
+      var(--main-bg-color) 0%,
+      rgba(0, 0, 0, 0) 95%
+    ),
+    linear-gradient(var(--pattern-color) 1px, transparent 1px),
+    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+  background-size:
+    cover,
+    15px 15px,
+    15px 15px;
+  background-position:
+    center center,
+    center center,
+    center center;
+  border-image: radial-gradient(
+      circle,
+      var(--main-color) 0%,
+      rgba(0, 0, 0, 0) 100%
+    )
+    1;
+  border-width: 1px 0 1px 0;
+  color: var(--main-color);
+  padding: 0.7rem 2rem; /* уменьшено */
+  font-weight: 700;
+  font-size: 1.2rem; /* уменьшено */
+  transition: background-size 0.2s ease-in-out;
+}
+
+.txbutton:hover {
+  background-size:
+    cover,
+    10px 10px,
+    10px 10px;
+}
+.txbutton:active {
+  filter: hue-rotate(250deg);
+}
+
+.buy{
+
+  --main-color: rgb(46, 213, 115);
+  --main-bg-color: rgba(46, 213, 116, 0.36);
+  --pattern-color: rgba(46, 213, 116, 0.073);
+
+}
+
+.sell{
+  --main-color: rgb(219,	112,	147);
+  --main-bg-color: rgba(219,	112,	147, 0.36);
+  --pattern-color: rgba(219,	112,	147, 0.073);
+
+}
+
+.lsddata{
+  margin-top: 1em;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.soon{
+  font-size: 300%;
+ font-family: 'Montserrat', sans-serif;;
+}

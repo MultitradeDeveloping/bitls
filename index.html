@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bitls: Liquid Staking Tokens</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@latest/dist/ethers.umd.min.js"></script>
+
+
+    <script src = 'back.js'></script>
+	   <link rel="stylesheet" href="style.css">
+
+  </head>
+
+  <body>
+    <div class="main">
+
+        <div class="info">
+
+          <img src="./img/logo.png" alt="logo" class = 'logo'>
+          <div class="">
+            <div class="dropdown">
+              <button id = 'usdt-bal' class="dropdown-btn">10.00 USDT</button>
+              <ul class="dropdown-content">
+                <li id='option0' data-value="Option 0">10.00 USDT</li>
+                <li id='option1' data-value="Option 1">0.1 BNB</li>
+                <li id='option2' data-value="Option 2">123 USM</li>
+              </ul>
+            </div>
+          </div>
+
+
+        <script>
+        // Логика для раскрытия списка
+        document.querySelector('.dropdown-btn').addEventListener('click', function() {
+          const dropdown = document.querySelector('.dropdown-content');
+          dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Логика для выбора элемента списка
+        document.querySelectorAll('.dropdown-content li').forEach(item => {
+        item.addEventListener('click', function() {
+          const selectedValue = this.textContent; // Получение текста внутри <li>
+          document.querySelector('.dropdown-btn').textContent = selectedValue;
+          document.querySelector('.dropdown-content').style.display = 'none'; // Закрытие списка
+        });
+      });
+
+
+        // Закрытие списка при клике вне его
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropdown-btn')) {
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(dropdown => {
+              dropdown.style.display = 'none';
+            });
+          }
+        };
+        </script>
+
+          <div class="mtt">
+              <h2 id = "mtt_h" class = "mtt_h">0 MTT</h2>
+              <button class="cssbuttons-io-button">
+                      <svg
+                        height="24"
+                        width="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                          <path d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path>
+                        </svg>
+                </button>
+
+          </div>
+
+          <button id = 'connectButton' class = 'metamask' onclick="connectMetaMask_();"> Connect MetaMask
+          </button>
+        </div>
+
+        <div class="menu">
+            <h1 class = 'menu-label' onclick="onclick=window.location.href='./buyMTT/index.html';">Buy MTT</h1>
+            <h1 class = 'menu-label picked' onclick="onclick=window.location.href='./index.html';">Trade LSD-Tokens</h1>
+            <h1 class = 'menu-label' onclick="onclick=window.location.href='./stake/index.html';">Earn USDT</h1>
+        </div>
+
+
+        <div class="lsd-block">
+          <div class="lsd" onclick="toggleExpand(this)">
+
+              <div class='lsd-name'>USM / USDT</div>
+
+              <div class="lsddata">
+                  <div class="graph">
+                      <canvas id="myChart" class='chart'></canvas>
+                  </div>
+
+                  <div class="infoblock">
+                      <h1 class='lsd-info price-str'>Price: <span id = 'price-value' class="price-value">1.0000</span><span id = 'price-profit-value' class='profit'>00000</span> <span class = 'price-value'> USDT </span></h1>
+                      <h2 class='lsd-info' id = 'supply-value'>Supply: 127.11 USM</h2>
+                      <h2 class='lsd-info'>APY: 6.4%</h2>
+                  </div>
+              </div>
+
+
+
+              <div class="txgroup">
+                <div = 'txsubgroup'>
+                    <button class="buy txbutton" onclick="event.stopPropagation(); var volume = document.getElementById('usm_buy_volume').value; buy(0, volume)">BUY</button>
+
+                    <div class="group">
+                          <input id = 'usm_buy_volume' required="" type="text" class="input" onclick="event.stopPropagation(); " onchange="changeSubvalue('usm', 'buy', this.value); ">
+                          <span class="highlight"></span>
+                          <span class="bar"></span>
+                          <label>Volume (USDT)</label>
+                          <h5 id = 'usm_buy_subvalue' class = 'volume_main'>~0.000 USM</h5>
+                    </div>
+                  </div>
+
+
+
+                <div = 'txsubgroup'>
+                  <button type="button" name="button" class='sell txbutton' onclick="event.stopPropagation(); var volume = document.getElementById('usm_sell_volume').value; sell(0, volume)">SELL</button>
+                  <div class="group">
+                        <input id = 'usm_sell_volume' required="" type="text" class="input" onclick="event.stopPropagation();" onchange="changeSubvalue('usm', 'sell', this.value); ">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Volume (USM)</label>
+                        <h5 id = 'usm_sell_subvalue' class = 'volume_main'>~0.000 USDT</h5>
+                  </div>
+                </div>
+              </div>
+
+            <script>
+            function toggleExpand(element) {
+              element.classList.toggle('expanded');
+            }
+
+            // Ваш код для Chart.js
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: ['Point 1', 'Point 2', 'Point 3', 'Point 4', 'Point 5'],
+                  datasets: [{
+                      label: 'Price',
+                      data: [1, 1.000006, 1.000012, 1.000018, 1.000025],
+                      fill: false
+                  }]
+              },
+              options: {
+                  scales: {
+                      y: {
+                          beginAtZero: false,
+                          min: 1,
+                          max: 1.000025
+                      }
+                  }
+              }
+            });
+            </script>
+
+            </div>
+            <div class="txgroup">
+              <button class="buy txbutton">BUY</button>
+
+                <button type="button" name="button" class='sell txbutton'>SELL</button>
+            </div>
+        </div>
+
+            <div class="lsd" onclick="toggleExpand(this)">
+
+                <div class='lsd-name'>MBNB / BNB</div>
+
+                 <div class="lsddata">
+                    <!-- <div class="graph">
+                        <canvas id="myChart1" class='chart'></canvas>
+                    </div>
+
+                    <div class="infoblock">
+                        <h1 class='lsd-info price-str'>Price: <span class="price-value">1.0000<span class='profit'>25</span> BNB</span></h1>
+                        <h2 class='lsd-info'>Supply: 0.168 MBNB</h2>
+                        <h2 class='lsd-info'>APY: 3.6%</h2>
+                    </div>
+                </div>
+
+                <div class="txgroup">
+                    <button class="buy txbutton">BUY</button>
+
+                    <div class="group">
+                          <input required="" type="text" class="input" onclick="event.stopPropagation();">
+                          <span class="highlight"></span>
+                          <span class="bar"></span>
+                          <label>Volume</label>
+                    </div>
+
+                    <button type="button" name="button" class='sell txbutton'>SELL</button>
+                </div>
+
+              <script>
+              function toggleExpand(element) {
+                element.classList.toggle('expanded');
+              }
+
+              // Ваш код для Chart.js
+              const ctx1 = document.getElementById('myChart1').getContext('2d');
+              const myChart1 = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ['Point 1', 'Point 2', 'Point 3', 'Point 4', 'Point 5'],
+                    datasets: [{
+                        label: 'Price',
+                        data: [1, 1.000006, 1.000012, 1.000018, 1.000025],
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 1,
+                            max: 1.000025
+                        }
+                    }
+                }
+              });
+              </script>
+
+              </div>
+              <div class="txgroup">
+                <button class="buy txbutton">BUY</button>
+
+                  <button type="button" name="button" class='sell txbutton'>SELL</button>
+              </div> -->
+                       <h1 class = 'soon'>SOON</h1>
+          </div>
+
+
+    </div>
+
+
+              </div>
+
+  </body>
+</html>

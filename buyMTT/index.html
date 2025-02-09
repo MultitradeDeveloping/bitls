@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bitls: Liquid Staking Tokens</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@latest/dist/ethers.umd.min.js"></script>
+
+    <script src = 'back.js'></script>
+	   <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="main">
+
+        <div class="info">
+
+          <img src="../img/logo.png" alt="logo" class = 'logo'>
+          <div class="">
+            <div class="dropdown">
+              <button id = 'usdt-bal' class="dropdown-btn">10.00 USDT</button>
+              <ul class="dropdown-content">
+                <li id='option0' data-value="Option 0">10.00 USDT</li>
+                <li id='option1' data-value="Option 1">0.1 BNB</li>
+                <li id='option2' data-value="Option 2">123 USM</li>
+              </ul>
+            </div>
+          </div>
+
+
+        <script>
+        // Логика для раскрытия списка
+        document.querySelector('.dropdown-btn').addEventListener('click', function() {
+          const dropdown = document.querySelector('.dropdown-content');
+          dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Логика для выбора элемента списка
+        document.querySelectorAll('.dropdown-content li').forEach(item => {
+        item.addEventListener('click', function() {
+          const selectedValue = this.textContent; // Получение текста внутри <li>
+          document.querySelector('.dropdown-btn').textContent = selectedValue;
+          document.querySelector('.dropdown-content').style.display = 'none'; // Закрытие списка
+        });
+      });
+
+
+        // Закрытие списка при клике вне его
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropdown-btn')) {
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(dropdown => {
+              dropdown.style.display = 'none';
+            });
+          }
+        };
+        </script>
+
+          <div class="mtt">
+              <h2 id = 'mtt_h'class = "mtt_h">148508 MTT</h2>
+              <button class="cssbuttons-io-button">
+                      <svg
+                        height="24"
+                        width="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                          <path d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path>
+                        </svg>
+                </button>
+
+          </div>
+
+          <button id = 'connectButton' class = 'metamask'> Connect MetaMask
+          </button>
+        </div>
+
+        <div class="menu">
+          <h1 class = 'menu-label picked' >Buy MTT</h1>
+          <h1 class = 'menu-label' onclick="onclick=window.location.href='../index.html';">Trade LSD-Tokens</h1>
+          <h1 class = 'menu-label' onclick="onclick=window.location.href='../stake/index.html';">Earn USDT</h1>
+        </div>
+
+        <div class="panel">
+          <h1 class = 'price'>1 MTT = 0.01 USDT<h1>
+            <div class="group">
+              <div>
+                  <input id = 'volume_usdt' required="" type="text" class="input" onclick="event.stopPropagation();" onchange="document.getElementById('volume_mtt').value = (this.value / 0.01).toFixed(1)">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Volume (USDT)</label>
+                </div>
+                  <div style="display: flex; justify-content:center;">
+                    <button type="button" name="button" class = 'percent' onclick = "fastSetMTTvolume(100); "> max</button>
+                    <button type="button" name="button" class = 'percent' onclick = 'fastSetMTTvolume(50)'> 50%</button>
+                    <button type="button" name="button" class = 'percent' onclick = 'fastSetMTTvolume(25)'> 25%</button>
+                </div>
+
+
+                  <div class="arrow-down">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                  </div>
+                </div>
+
+                  <div class="group">
+
+                  <input id = 'volume_mtt' required="" type="text" class="input" onclick="event.stopPropagation();" onchange="document.getElementById('volume_usdt').value = (this.value * 0.01).toFixed(3)">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Volume (MTT)</label>
+              </div>
+
+                <button class="buy txbutton" onclick="event.stopPropagation(); var volume = document.getElementById('volume_usdt').value; buyMTT(volume);" >BUY</button>
+
+        </div>
+
+    </div>
+
+  </body>
+</html>
